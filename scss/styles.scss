@@ -1,0 +1,149 @@
+@use "./base";
+
+$primary-color: #936CDD;
+$heading-color: #201830;
+$text-color-1: #665F73;
+$text-color-2: #FFF;
+
+@mixin displayFlex($h: center, $v:center) {
+    display: flex;
+    align-items: $h;
+    justify-content: $v;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    scroll-behavior: smooth;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.6rem;
+    color: $text-color-1;
+}
+
+/* body::-webkit-scrollbar {
+  display: none;
+} */
+
+/* Common */
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+@mixin lineClamp($lines:1) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.btn {
+    @include displayFlex;
+    width: 157px;
+    height: 64px;
+    border-radius: 8px;
+    background: $primary-color;
+    color: $text-color-2;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.67; /* 166.667% */
+    transition: opacity .25s;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.btn-1 {
+    @extend .btn;
+    background: $heading-color;
+}
+
+.fixed {
+    position: sticky;
+    top: -36px;
+    z-index: 4;
+}
+
+/* Header */
+.header {
+    background: #FFF8F3;
+    padding-top: 36px;
+}
+
+.header__row {
+    @include displayFlex($v: space-between);
+    padding: 8px 0;
+
+    .nav__list {
+        @include displayFlex(start, start);
+
+        .nav__link {
+            position: relative;
+            padding: 8px 24px;
+            line-height: 1.75; /* 175% */
+            transition: color .25s, text-shadow .25s;
+
+            &:hover {
+                color: $heading-color;
+                text-shadow: 1px 0 0 currentColor;
+            }
+        }
+
+        .nav__link--active::after {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-70%);
+            content: '';
+            display: inline-block;
+            margin-left: 7px;
+            width: 6px;
+            height: 6px;
+            border: 1px solid currentColor;
+            border-top: none;
+            border-left: none;
+            rotate: 45deg;
+        }
+    }
+
+    .cta {
+        @include displayFlex($h: center);
+        column-gap: 28px;
+
+        .log-in-btn {
+            color: $heading-color;
+            line-height: 1.75; /* 175% */
+        }
+
+        .sign-up-btn {
+            width: 116px;
+            height: 48px;
+            font-size: 1.6rem;
+            border-radius: 6px;
+        }
+    }
+}
+
+.logo__wrapper {
+    @include displayFlex($v: start);
+    column-gap: 9px;
+    color: $heading-color;
+
+    span {
+        font-size: 2.2rem;
+        font-weight: 600;
+    }
+}
+
+
