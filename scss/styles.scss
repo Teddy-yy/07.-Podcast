@@ -51,6 +51,33 @@ $text-color-2: #FFF;
     font-weight: 400;
 }
 
+@mixin playBtn($size: 14px, $bg: $heading-color, $border-color: $text-color-2) {
+    position: relative;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background: $bg;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-20%, -50%);
+        width: 0;
+        height: 0;
+        border-top: calc($size / 4) solid transparent;
+        border-bottom: calc($size / 4) solid transparent;
+        border-right: calc($size / 4) solid transparent;
+        border-left: calc($size / 3) solid $border-color; 
+    }
+}
+
+@mixin widthHeight($w: 100%, $h: $w) {
+    width: $w;
+    height: $h;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -71,9 +98,9 @@ body{
     color: $text-color-1;
 }
 
-/* body::-webkit-scrollbar {
+body::-webkit-scrollbar {
   display: none;
-} */
+}
 
 /* Common */
 a {
@@ -91,26 +118,35 @@ a {
     position: absolute;
 }
 
-.highlight {
+@mixin headingHighlight($w: 100%) {
+    .highlight {
     position: relative;
     display: inline-block;
     z-index: 1;
 }
+    .highlight::after {
+        content: '';
+        display: inline-block;
+        width: $w;
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        top: 45%;
+        transform: translateX(-50%);
+        background-image: url("/assets/icon/heading-deco-large.svg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        pointer-events: none;
+        z-index: -1;
+    }
+}
 
-.highlight::after {
-    content: '';
-    display: inline-block;
-    width: 328px;
-    height: 37px;
-    position: absolute;
-    left: 50%;
-    top: 71%;
-    transform: translateX(-50%);
-    background-image: url("/assets/icon/heading-deco-large.svg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    pointer-events: none;
-    z-index: -1;
+.listen-icon {
+    @include playBtn;
+}
+
+.btn {
+    @include btn;
 }
 
 /* Header */
@@ -163,7 +199,7 @@ a {
             line-height: 1.75; /* 175% */
         }
 
-        .sign-up-btn {
+        .btn {
             @include btn($bg: $heading-color);
             width: 116px;
             height: 48px;
@@ -360,10 +396,15 @@ a {
             left: 157px;
         }
 
-        .hero__deco--app {
+        .hero__deco--apps {
             top: -56px;
             @include displayFlex;
             column-gap: 18px;
+        }
+
+        .hero__deco--app {
+            @include widthHeight(28px);
+            object-fit: contain;
         }
     }
 }
@@ -371,6 +412,7 @@ a {
 .hero__content {
     .hero__title {
         @include heading($fz: 7rem, $lh: 1.14);
+        @include headingHighlight(328px);
     }
 
     .hero__desc {
@@ -392,25 +434,8 @@ a {
         @include displayFlex($h: center);
         column-gap: 8px;
 
-        .wrapper {
-            position: relative;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: $heading-color;
-        }
-
-        .triangle {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-20%, -50%);
-            width: 0;
-            height: 0;
-            border-top: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-            border-right: 4px solid transparent;
-            border-left: 6px solid $text-color-2; 
+        .listen-icon {
+            @include playBtn($size: 18px);
         }
     }
 
@@ -418,8 +443,71 @@ a {
         @include desc($heading-color, 1.8rem, 1.67);
         font-weight: 600;
     }
+}
 
-    
+/* Directories */
+.directories {
+    padding: 80px;
+    margin-top: 80px;
+
+    .directories__inner {
+        padding: 45px 0;
+    }
+
+    &__title {
+        @include heading;
+        max-width: 450px;
+        @include headingHighlight(236px);
+    }
+
+    &__desc {
+        @include desc;
+        margin-top: 18px;
+        max-width: 490px;
+    }
+
+    .btn {
+        margin-top: 38px;
+        column-gap: 8px;
+    }
+
+    .listen-icon {
+        @include playBtn(18px, $text-color-2, $primary-color-1);
+    }
+
+    .directories__apps {
+        position: relative;
+    }
+
+    .directories__app:nth-child(1) {
+        @include widthHeight(148px);
+        top: -45px;
+        left: 185px;
+    }
+
+    .directories__app:nth-child(2) {
+        @include widthHeight(138px);
+        bottom: 5px;
+        right: 48px;
+    }
+
+    .directories__app:nth-child(3) {
+        @include widthHeight(126px);
+        bottom: -45px;
+        left: 169px;
+    }
+
+    .directories__app:nth-child(4) {
+        @include widthHeight(80px);
+        top: 119px;
+        left: 0;
+    }
+
+    .directories__app:nth-child(5) {
+        @include widthHeight(100px);
+        top: 14px;
+        right: 0;
+    }
 }
 
 
