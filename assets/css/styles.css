@@ -977,6 +977,16 @@ table {
     --grid-gutter-y: 90px;
   }
 }
+.directories .rounded-blur {
+  position: absolute;
+  width: 287px;
+  height: 287px;
+  border-radius: 50%;
+  opacity: 0.4;
+  background: #FF9051;
+  filter: blur(129px);
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -1506,6 +1516,10 @@ body a {
   height: 100px;
   top: 14px;
   right: 0;
+}
+.directories .rounded-blur {
+  top: -11px;
+  left: 142px;
 }
 
 /* Category */
