@@ -51,7 +51,7 @@ $text-color-2: #FFF;
     font-weight: 400;
 }
 
-@mixin playBtn($size: 14px, $bg: $heading-color, $border-color: $text-color-2) {
+@mixin playBtn($size: 14px, $bg: $heading-color, $triangle-color: $text-color-2) {
     position: relative;
     width: $size;
     height: $size;
@@ -69,7 +69,7 @@ $text-color-2: #FFF;
         border-top: calc($size / 4) solid transparent;
         border-bottom: calc($size / 4) solid transparent;
         border-right: calc($size / 4) solid transparent;
-        border-left: calc($size / 3) solid $border-color; 
+        border-left: calc($size / 3) solid $triangle-color; 
     }
 }
 
@@ -604,6 +604,89 @@ body a {
     .btn {
         background: $heading-color;
         margin: 0 auto;
+    }
+}
+
+/* Category */
+.popular {
+    padding: 100px 0;
+    margin-top: 80px;
+    background: $primary-color-2;
+
+    &__top {
+        @include displayFlex(center, space-between);
+
+    }
+
+    &__title {
+        @include heading;
+        @include headingHighlight(139px);
+        max-width: 390px;
+    }
+
+    .btn {
+        background: $heading-color;
+    }
+
+    .popular__list {
+        margin-top: 86px;
+    }
+
+    .popular__item:hover {
+        .popular__link {
+            color: $primary-color-1;
+        }
+
+        .listen-icon {
+            background: $primary-color-1;
+        }
+    }
+
+    .popular__img {
+        width: 100%;
+        height: 286px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .popular__meta {
+        color: $primary-color-3;
+        font-size: 1.4rem;
+        line-height: 1.71; /* 171.429% */
+    }
+
+    .popular__item--title {
+        @include heading($heading-color, 2rem, 1.5);
+        margin-top: 6px;
+    }
+
+    .popular__desc {
+        @include desc;
+        margin-top: 18px;
+    }
+
+    .popular__cta {
+        margin-top: 11px;
+        @include displayFlex($h: center);
+        column-gap: 6px;
+    }
+
+    .popular__link {
+        color: $heading-color;
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1.71; /* 171.429% */
+        transition: color .25s;
+    }
+
+    .listen-icon {
+        @include playBtn(14px, $heading-color, $text-color-2);
+        transition: background .25s;
+    }
+
+    .slider {
+        margin-top: 55px;
+        text-align: center;
     }
 }
 
