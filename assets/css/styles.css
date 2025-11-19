@@ -1760,4 +1760,74 @@ body a {
   text-align: center;
 }
 
+/* Feedback */
+.feedback {
+  padding: 80px 0;
+}
+.feedback .feedback__media {
+  position: relative;
+}
+.feedback .feedback__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.feedback .feedback__img--sm {
+  position: absolute;
+  z-index: 1;
+  margin-top: 80px;
+}
+.feedback .feedback__img--sm img {
+  height: 284px;
+}
+.feedback .feedback__img--lg {
+  height: 444px;
+}
+.feedback .popular__quote-icon {
+  color: #FF9051;
+}
+.feedback .feedback__title {
+  color: #201830;
+  font-size: 4.2rem;
+  line-height: 1.24;
+  font-weight: 700;
+}
+.feedback .feedback__title .highlight {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+.feedback .feedback__title .highlight::after {
+  content: "";
+  display: inline-block;
+  width: 182px;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translateX(-50%);
+  background-image: url("/assets/icon/heading-deco-large.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: -1;
+}
+.feedback .feedback__title {
+  margin-top: 18px;
+}
+.feedback .feedback__text {
+  color: #665F73;
+  font-size: 1.6rem;
+  line-height: 1.75;
+  font-weight: 400;
+  margin-top: 38px;
+}
+.feedback .feedback__name {
+  color: #ABA6B5;
+  font-size: 1.4rem;
+  margin-top: 18px;
+  line-height: 1.71; /* 171.429% */
+}
+
 /*# sourceMappingURL=styles.css.map */

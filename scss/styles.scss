@@ -706,6 +706,58 @@ body a {
     }
 }
 
+/* Feedback */
+.feedback {
+    padding: 80px 0;
+
+    .feedback__media {
+        position: relative;
+    }
+
+    .feedback__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .feedback__img--sm {
+        position: absolute;
+        z-index: 1;
+        margin-top: 80px;
+    }
+
+    .feedback__img--sm img {
+        height: 284px;
+    }
+
+    .feedback__img--lg {
+        height: 444px;
+    }
+
+    .popular__quote-icon {
+        color: $primary-color-3;
+    }
+
+    .feedback__title {
+        @include heading;
+        @include headingHighlight(182px);
+        margin-top: 18px;
+    }
+
+    .feedback__text {
+        @include desc;
+        margin-top: 38px;
+    }
+
+    .feedback__name {
+        color: #ABA6B5;
+        font-size: 1.4rem;
+        margin-top: 18px;
+        line-height: 1.71; /* 171.429% */
+    }
+}
+
 
 
 
