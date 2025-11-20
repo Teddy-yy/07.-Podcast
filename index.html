@@ -34,7 +34,7 @@
     <meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body style="height: 10000px;">
+<body>
     <!-- Header -->
     <header class="header fixed">
         <div class="container">
@@ -48,10 +48,10 @@
                 <!-- Navigation -->
                 <nav class="nav">
                     <ul class="nav__list">
-                        <li class="nav__item"><a href="#!" class="nav__link">Episodes</a></li>
-                        <li class="nav__item"><a href="#!" class="nav__link">Trending</a></li>
-                        <li class="nav__item"><a href="#!" class="nav__link nav__link--active">Category</a></li>
-                        <li class="nav__item"><a href="#!" class="nav__link">Blog</a></li>
+                        <li class="nav__item"><a href="#directories" class="nav__link">Episodes</a></li>
+                        <li class="nav__item"><a href="#category" class="nav__link">Trending</a></li>
+                        <li class="nav__item"><a href="#popular" class="nav__link nav__link--active">Category</a></li>
+                        <li class="nav__item"><a href="#feedback" class="nav__link">Blog</a></li>
                     </ul>
                 </nav>
         
@@ -147,7 +147,7 @@
         </section>
 
         <!-- Directories -->
-        <section class="directories">
+        <section class="directories" id="directories">
             <div class="container">
                 <div class="row row-cols-2 directories__inner">
                     <div class="col-lg-5">
@@ -174,7 +174,7 @@
         </section>
 
         <!-- Category -->
-        <section class="category">
+        <section class="category" id="category">
             <div class="container">
                 <div class="category__top">
                     <h2 class="category__title">Listen by <span class="highlight">category</span></h2>
@@ -279,7 +279,7 @@
         </section>
 
         <!-- Popular -->
-        <section class="popular">
+        <section class="popular" id="popular">
             <div class="container">
                 <div class="popular__top">
                     <h2 class="popular__title">Our most <span class="highlight">popular</span> episodes</h2>
@@ -384,7 +384,7 @@
         </section>
 
         <!-- Feedback -->
-        <section class="feedback">
+        <section class="feedback" id="feedback">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
@@ -426,6 +426,143 @@
                 </div>
             </div>
         </section>
+
+        <!-- Subscribe -->
+        <section class="subscribe">
+            <div class="container">
+                <div class="subscribe__inner">
+                    <div class="subscribe__top">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5 offset-lg-1">
+                                <h2 class="subscribe__title">Subscribe and get <span class="highlight">update</span> regularly</h2>
+                            </div>
+                            <div class="col-lg-5">
+                                <p class="subscribe__desc">Rebuilt for simplicity and speed, so you can spend more time discovering and listening to great podcasts. Get all the <span class="highlight">updates</span> of latest podcasts.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subscribe__form">
+                        <div class="row">
+                            <div class="col-lg-4 offset-lg-1">
+                                <input type="text" name="name" id="" placeholder="Your name">
+                            </div>
+                            <div class="col-lg-4">
+                                <input type="email" name="email" id="" placeholder="Your email address">
+                            </div>
+                            <div class="subscribe__cta">
+                                <a href="#!" class="btn">Subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subscribe__deco">
+                        <!-- Item 1 -->
+                         <div class="deco subscribe__deco-item">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 0L13.6122 10.3878L24 12L13.6122 13.6122L12 24L10.3878 13.6122L0 12L10.3878 10.3878L12 0Z" fill="currentColor"/>
+                            </svg>
+                         </div>
+                         <!-- Item 2 -->
+                         <div class="deco subscribe__deco-item">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 0L13.6122 10.3878L24 12L13.6122 13.6122L12 24L10.3878 13.6122L0 12L10.3878 10.3878L12 0Z" fill="currentColor"/>
+                            </svg>
+                         </div>
+                         <!-- Item 3 -->
+                         <div class="deco subscribe__deco-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 0L13.6122 10.3878L24 12L13.6122 13.6122L12 24L10.3878 13.6122L0 12L10.3878 10.3878L12 0Z" fill="currentColor"/>
+                            </svg>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer_left">
+                    <!-- Logo -->
+                    <a href="#!" class="logo__wrapper">
+                        <img src="./assets/icon/logo.svg" alt="babble" class="logo">
+                        <span>babble</span>
+                    </a>
+                    <p class="footer__copyright">Copyright © 2022 UIHUT all rights reserved.</p>
+                    <div class="footer__socials">
+                        <a href="#!" class="footer__wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+                            <path d="M4.60363 13.7721V6.95792H6.65161L6.92308 4.55965H4.60363L4.60707 3.35921C4.60707 2.73369 4.67042 2.39868 5.62826 2.39868H6.90872V0H4.86027C2.39973 0 1.53382 1.16336 1.53382 3.12006V4.55984H0V6.95833H1.53382V13.6755C2.13136 13.7872 2.74912 13.8462 3.38163 13.8462C3.79024 13.8462 4.19842 13.8214 4.60363 13.7721Z" fill="white"/>
+                            </svg>
+                        </a>
+                        <a href="#!" class="footer__wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none">
+                            <path d="M0 1.60839C0 1.14218 0.163726 0.757566 0.491164 0.454545C0.818602 0.151511 1.24429 0 1.76819 0C2.28275 0 2.69906 0.149175 3.01715 0.447552C3.34459 0.755245 3.50832 1.15617 3.50832 1.65035C3.50832 2.0979 3.34928 2.47085 3.03118 2.76923C2.70375 3.07692 2.27339 3.23077 1.74012 3.23077H1.72609C1.21153 3.23077 0.795223 3.07692 0.477131 2.76923C0.159039 2.46154 0 2.07459 0 1.60839ZM0.182432 13.8462V4.5035H3.29782V13.8462H0.182432ZM5.02391 13.8462H8.13929V8.62937C8.13929 8.30302 8.17672 8.05127 8.25156 7.87413C8.38253 7.55711 8.58134 7.28904 8.84797 7.06993C9.1146 6.85081 9.44906 6.74126 9.85135 6.74126C10.8992 6.74126 11.4231 7.44522 11.4231 8.85315V13.8462H14.5385V8.48951C14.5385 7.10955 14.211 6.06294 13.5561 5.34965C12.9012 4.63636 12.0359 4.27972 10.96 4.27972C9.75312 4.27972 8.81289 4.7972 8.13929 5.83217V5.86014H8.12526L8.13929 5.83217V4.5035H5.02391C5.04261 4.80186 5.05197 5.72959 5.05197 7.28671C5.05197 8.84382 5.04261 11.0303 5.02391 13.8462Z" fill="white"/>
+                            </svg>
+                        </a>
+                        <a href="#!" class="footer__wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="14" viewBox="0 0 18 14" fill="none">
+                            <path d="M18 1.63917C17.3306 1.91716 16.6174 2.10142 15.8737 2.19089C16.6388 1.75846 17.2226 1.07893 17.4971 0.259882C16.7839 0.662485 15.9964 0.946864 15.1571 1.10556C14.4799 0.42284 13.5146 0 12.4616 0C10.4186 0 8.77387 1.56994 8.77387 3.49456C8.77387 3.77148 8.79862 4.03775 8.85938 4.29124C5.7915 4.14959 3.07687 2.75751 1.25325 0.636923C0.934875 1.15988 0.748125 1.75846 0.748125 2.40284C0.748125 3.61278 1.40625 4.68533 2.38725 5.30627C1.79437 5.29562 1.21275 5.13266 0.72 4.87598C0.72 4.88663 0.72 4.90047 0.72 4.91432C0.72 6.61207 1.99912 8.02225 3.6765 8.3471C3.37612 8.42485 3.04875 8.46213 2.709 8.46213C2.47275 8.46213 2.23425 8.44935 2.01038 8.40248C2.4885 9.78604 3.84525 10.8032 5.4585 10.8362C4.203 11.766 2.60888 12.3263 0.883125 12.3263C0.5805 12.3263 0.29025 12.3135 0 12.2783C1.63462 13.2763 3.57188 13.8462 5.661 13.8462C12.4515 13.8462 16.164 8.52071 16.164 3.90462C16.164 3.75018 16.1584 3.60107 16.1505 3.45302C16.8829 2.96095 17.4982 2.34639 18 1.63917Z" fill="white"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__right">
+                    <!-- Col 1 -->
+                    <div class="footer_col">
+                        <p class="footer__title">Links</p>
+                        <ul class="footer__list">
+                            <li><a href="#!" class="footer__link">Home</a></li>
+                            <li><a href="#!" class="footer__link">Episodes</a></li>
+                            <li><a href="#!" class="footer__link">Trending</a></li>
+                            <li><a href="#!" class="footer__link">Category</a></li>
+                            <li><a href="#!" class="footer__link">Blog</a></li>
+                        </ul>
+                    </div>
+                    <!-- Col 2 -->
+                    <div class="footer_col">
+                        <p class="footer__title">Features</p>
+                        <ul class="footer__list">
+                            <li><a href="#!" class="footer__link">Style guide</a></li>
+                            <li><a href="#!" class="footer__link">Instructions</a></li>
+                            <li><a href="#!" class="footer__link">Catalog</a></li>
+                            <li><a href="#!" class="footer__link">Your podcast</a></li>
+                        </ul>
+                    </div>
+                    <!-- Col 3 -->
+                    <div class="footer_col">
+                        <p class="footer__title">Features</p>
+                        <ul class="footer__list">
+                            <li><a href="#!" class="footer__link">Privacy</a></li>
+                            <li><a href="#!" class="footer__link">Terms</a></li>
+                            <li><a href="#!" class="footer__link">Security</a></li>
+                            <li><a href="#!" class="footer__link">Cookies</a></li>
+                        </ul>
+                    </div>
+                    <!-- Col 4 -->
+                    <div class="footer_col">
+                        <p class="footer__title">Listen on</p>
+                        <div class="footer__apps">
+                            <a href="#!">
+                                <img src="./assets/img/spotify.png" alt="Spotify" class="footer__app" title='Spotify'>
+                            </a>
+                            <a href="#!">
+                                <img src="./assets/img/google-podcasts.png" alt="Google Podcasts" class="footer__app" title="Google Podcasts">
+                            </a>
+                            <a href="#!">
+                                <img src="./assets/img/soundcloud.png" alt="SoundCloud" class="footer__app" title="SoundCloud">
+                            </a>
+                            <a href="#!">
+                                <img src="./assets/img/apple-podcasts.png" alt="Apple Podcasts" class="footer__app" title="Apple Podcasts">
+                            </a>
+                            <a href="#!">
+                                <img src="./assets/img/pocket-casts.png" alt="Pocket Casts" class="footer__app" title="Pocket Casts">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
