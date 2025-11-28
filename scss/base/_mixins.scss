@@ -1,0 +1,112 @@
+$primary-color-1: #936CDD;
+$primary-color-2: #FFF8F3;
+$primary-color-3: #FF9051;
+$heading-color: #201830;
+$text-color-1: #665F73;
+$text-color-2: #FFF;
+$text-color-3: #ABA6B5;
+
+%rounded-blur {
+    position: absolute;
+    width: 287px;
+    height: 287px;
+    border-radius: 50%;
+    opacity: 0.4;
+    background: $primary-color-3;
+    filter: blur(129px);
+}
+
+@mixin lineClamp($lines:1) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@mixin displayFlex($h: start, $v:start) {
+    display: flex;
+    align-items: $h;
+    justify-content: $v;
+}
+
+@mixin btn($bg: $primary-color-1) {
+    @include displayFlex(center, center);
+    width: 157px;
+    height: 64px;
+    border-radius: 8px;
+    background: $bg;
+    color: $text-color-2;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.67; /* 166.667% */
+    transition: opacity .25s;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+@mixin heading($color: $heading-color, $fz: 4.2rem, $lh: 1.24) {
+    color: $color;
+    font-size: $fz;
+    line-height: $lh;
+    font-weight: 700;
+}
+
+@mixin headingHighlight($w: 100%) {
+    .highlight {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+    .highlight::after {
+        content: '';
+        display: inline-block;
+        width: $w;
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        top: 45%;
+        transform: translateX(-50%);
+        background-image: url("/assets/icon/heading-deco-large.svg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        pointer-events: none;
+        z-index: -1;
+    }
+}
+
+@mixin desc($color: $text-color-1, $fz: 1.6rem, $lh: 1.75) {
+    color: $color;
+    font-size: $fz;
+    line-height: $lh;
+    font-weight: 400;
+}
+
+@mixin playBtn($size: 14px, $bg: $heading-color, $triangle-color: $text-color-2) {
+    position: relative;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background: $bg;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-20%, -50%);
+        width: 0;
+        height: 0;
+        border-top: calc($size / 4) solid transparent;
+        border-bottom: calc($size / 4) solid transparent;
+        border-right: calc($size / 4) solid transparent;
+        border-left: calc($size / 3) solid $triangle-color; 
+    }
+}
+
+@mixin widthHeight($w: 100%, $h: $w) {
+    width: $w;
+    height: $h;
+}
+

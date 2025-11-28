@@ -1,93 +1,4 @@
-@use "./base";
-
-$primary-color-1: #936CDD;
-$primary-color-2: #FFF8F3;
-$primary-color-3: #FF9051;
-$heading-color: #201830;
-$text-color-1: #665F73;
-$text-color-2: #FFF;
-$text-color-3: #ABA6B5;
-
-@mixin lineClamp($lines:1) {
-    display: -webkit-box;
-    -webkit-line-clamp: $lines;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-@mixin displayFlex($h: start, $v:start) {
-    display: flex;
-    align-items: $h;
-    justify-content: $v;
-}
-
-@mixin btn($bg: $primary-color-1) {
-    @include displayFlex(center, center);
-    width: 157px;
-    height: 64px;
-    border-radius: 8px;
-    background: $bg;
-    color: $text-color-2;
-    font-size: 1.8rem;
-    font-weight: 600;
-    line-height: 1.67; /* 166.667% */
-    transition: opacity .25s;
-
-    &:hover {
-        opacity: 0.8;
-    }
-}
-
-@mixin heading($color: $heading-color, $fz: 4.2rem, $lh: 1.24) {
-    color: $color;
-    font-size: $fz;
-    line-height: $lh;
-    font-weight: 700;
-}
-
-@mixin desc($color: $text-color-1, $fz: 1.6rem, $lh: 1.75) {
-    color: $color;
-    font-size: $fz;
-    line-height: $lh;
-    font-weight: 400;
-}
-
-@mixin playBtn($size: 14px, $bg: $heading-color, $triangle-color: $text-color-2) {
-    position: relative;
-    width: $size;
-    height: $size;
-    border-radius: 50%;
-    background: $bg;
-
-    &::after {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-20%, -50%);
-        width: 0;
-        height: 0;
-        border-top: calc($size / 4) solid transparent;
-        border-bottom: calc($size / 4) solid transparent;
-        border-right: calc($size / 4) solid transparent;
-        border-left: calc($size / 3) solid $triangle-color; 
-    }
-}
-
-@mixin widthHeight($w: 100%, $h: $w) {
-    width: $w;
-    height: $h;
-}
-
-%rounded-blur {
-    position: absolute;
-    width: 287px;
-    height: 287px;
-    border-radius: 50%;
-    opacity: 0.4;
-    background: $primary-color-3;
-    filter: blur(129px);
-}
+@use "./base" as *;
 
 * {
     padding: 0;
@@ -131,29 +42,6 @@ body a {
     position: absolute;
 }
 
-@mixin headingHighlight($w: 100%) {
-    .highlight {
-    position: relative;
-    display: inline-block;
-    z-index: 1;
-}
-    .highlight::after {
-        content: '';
-        display: inline-block;
-        width: $w;
-        height: 100%;
-        position: absolute;
-        left: 50%;
-        top: 45%;
-        transform: translateX(-50%);
-        background-image: url("/assets/icon/heading-deco-large.svg");
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        pointer-events: none;
-        z-index: -1;
-    }
-}
-
 .listen-icon {
     @include playBtn;
 }
@@ -176,6 +64,7 @@ body a {
         @include displayFlex;
 
         .nav__link {
+            display: inline-block;
             position: relative;
             padding: 8px 24px;
             line-height: 1.75; /* 175% */
@@ -244,7 +133,7 @@ body a {
 .hero__media {
     @include displayFlex(center, space-between);
 
-    .hero__column {
+    .hero__card {
         position: relative;
     }
 
@@ -269,7 +158,7 @@ body a {
     }
 
     .hero__player {
-        top: 272px;
+        bottom: -30px;
         @include displayFlex(center, center);
         column-gap: 12px;
         background: $text-color-2;
@@ -277,24 +166,8 @@ body a {
     }
 
     .hero__player--btn {
-        position: relative;
-        /* @include displayFlex(center, center); */
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
+        @include playBtn(26px, transparent, $primary-color-1);
         border: 1px solid $primary-color-1;
-        background: transparent;
-
-        .hero__player--icon {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-20%, -50%);
-            border-top: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-            border-right: 4px solid transparent;
-            border-left: 6px solid $primary-color-1; /* màu của tam giác */
-        }
     }
 
     .hero__listener {
@@ -341,32 +214,27 @@ body a {
         @include displayFlex(center, center);
         flex-direction: column;
         background: rgba($text-color-2, 0.4);
-        border-radius: 9px;
         box-shadow: 0 12px 44px 0 rgba(0, 0, 0, 0.07);
         backdrop-filter: blur(5px);
+    }
 
-        span {
-            display: block;
-        }
+    .hero__user--name {
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1; /* 100% */
+        color: $heading-color;
+        margin-bottom: 6px;
+    }
 
-        .hero__user--name {
-            font-size: 1.4rem;
-            font-weight: 600;
-            line-height: 1; /* 100% */
-            color: $heading-color;
-            margin-bottom: 6px;
-        }
-
-        .hero__user--role {
-            font-size: 1.2rem;
-            font-weight: 400;
-            line-height: 1; /* 100% */
-        }
+    .hero__user--role {
+        font-size: 1.2rem;
+        font-weight: 400;
+        line-height: 1; /* 100% */
     }
 
     .hero__deco {
         .hero__deco--stats {
-            top: -150px;
+            top: 8px;
             left: 118px;
             @include displayFlex(center, center);
             flex-direction: column;
@@ -392,17 +260,17 @@ body a {
         }
 
         & .hero__deco-line:nth-child(2){
-            top: -107px;
+            top: 44px;
             left: 54px;
         }
 
         & .hero__deco-line:nth-child(3){
-            top: -50px;
+            top: 102px;
             left: 157px;
         }
 
         .hero__deco--apps {
-            top: -56px;
+            top: 102px;
             @include displayFlex;
             column-gap: 18px;
         }
@@ -455,10 +323,6 @@ body a {
     padding: 80px;
     margin-top: 80px;
 
-    .directories__inner {
-        padding: 45px 0;
-    }
-
     &__title {
         @include heading;
         max-width: 450px;
@@ -471,7 +335,7 @@ body a {
         max-width: 490px;
     }
 
-    .btn {
+    .directories__btn {
         margin-top: 38px;
         column-gap: 8px;
     }
@@ -482,43 +346,44 @@ body a {
 
     .directories__apps {
         position: relative;
-        height: 100%;
+        height: 399px;
     }
 
     .directories__app:nth-child(1) {
         @include widthHeight(148px);
-        top: -45px;
+        top: 0;
         left: 185px;
     }
 
     .directories__app:nth-child(2) {
         @include widthHeight(138px);
-        bottom: 5px;
+        bottom: 40px;
         right: 48px;
     }
 
     .directories__app:nth-child(3) {
         @include widthHeight(126px);
-        bottom: -45px;
+        bottom: 0;
         left: 169px;
     }
 
     .directories__app:nth-child(4) {
         @include widthHeight(80px);
-        top: 119px;
+        top: 164px;
         left: 0;
     }
 
     .directories__app:nth-child(5) {
         @include widthHeight(100px);
-        top: 14px;
+        top: 59px;
         right: 0;
     }
 
     .rounded-blur {
         @extend %rounded-blur;
-        top: -11px;
-        left: 142px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -526,42 +391,40 @@ body a {
 .category {
     padding: 80px 0;
 
-    .category__top {
+    &__top {
         text-align: center;
     }
 
-    .category__title {
+    &__title {
         @include heading;
         @include headingHighlight(193px);
     }
 
-    .category__desc {
+    &__desc {
         @include desc;
         margin: 18px auto 0;
         max-width: 470px;
     }
 
-    .category__list {
-        @include displayFlex;
+    &__list {
         margin-top: 70px;
     }
 
-    .category__left {
+    &__left {
         height: 100%;
     }
 
-    .category__right {
+    &__right {
         @include displayFlex;
         flex-wrap: wrap;
         row-gap: 30px;
-        height: 600px;
 
         .category__channel {
             height: 285px;
         }
     }
 
-    .category__channel {
+    &__channel {
         position: relative;
         height: 100%;
         border-radius: 8px;
@@ -574,13 +437,17 @@ body a {
         }
     }
 
-    .category__img {
+    &__channel--wrapper {
+        height: 100%;
+    }
+
+    &__img {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
 
-    .category__overlay {
+    &__overlay {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -590,31 +457,31 @@ body a {
         background: rgba($text-color-2, $alpha: 0.2);
     }
 
-    .category__overlay--row {
+    &__overlay--row {
         @include displayFlex($h: center);
         column-gap: 8px;
     }
 
-    .category__channel--title {
+    &__channel--title {
         font-size: 1.8rem;
         font-weight: 600;
         line-height: 1.67; /* 166.667% */
     }
 
-    .category__channel--arrow {
+    &__channel--arrow {
         @include widthHeight(14px);
         @include displayFlex(center, center);
         border-radius: 50%;
         border: 1px solid currentColor;
     }
 
-    .category__channel--desc {
+    &__channel--desc {
         font-size: 1.4rem;
         font-weight: 300;
         line-height: 1.71; /* 166.667% */
     }
 
-    .category__cta {
+    &__cta {
         margin-top: 55px;
     }
 
@@ -647,6 +514,7 @@ body a {
 
     .popular__list {
         margin-top: 86px;
+        overflow: hidden;
     }
 
     .popular__item:hover {
@@ -709,7 +577,9 @@ body a {
 
 /* Feedback */
 .feedback {
+    position: relative;
     padding: 80px 0;
+    overflow: hidden;
 
     .feedback__media {
         position: relative;
@@ -726,9 +596,6 @@ body a {
         position: absolute;
         z-index: 1;
         margin-top: 80px;
-    }
-
-    .feedback__img--sm img {
         height: 284px;
     }
 
@@ -757,13 +624,25 @@ body a {
         margin-top: 18px;
         line-height: 1.71; /* 171.429% */
     }
+
+    .slider {
+        position: absolute;
+        bottom: 0;
+        left: 74px;
+    }
+
+    .rounded-blur {
+        @extend %rounded-blur;
+        right: -162px;
+        top: 80px;
+    }
 }
 
 /* Subscribe */
 .subscribe {
     .subscribe__inner {
         position: relative;
-        padding: 100px 0 110px;
+        padding: 100px 100px 110px;
         background: $heading-color;
         border-radius: 12px;
     }
@@ -871,9 +750,6 @@ body a {
         max-width: 270px;
     }
 
-    .footer__list {
-    }
-
     .footer__link {
         @include desc;
         display: inline-block;
@@ -894,6 +770,10 @@ body a {
         column-gap: 16px;
     }
 }
+
+
+
+
 
 
 
